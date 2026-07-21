@@ -15,3 +15,5 @@ class Config:
 
     # Konfigurasi Flask
     DEBUG = True
+
+    

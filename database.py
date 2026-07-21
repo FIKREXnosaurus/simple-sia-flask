@@ -1,25 +1,24 @@
 import mysql.connector
 from mysql.connector import Error
 
-from config import Config
-
-
 def get_connection():
-    """
-    Membuat koneksi ke database MySQL.
-    """
+    hostname = "2tgpcr.h.filess.io"
+    database = "db_akademik_hallyeswe"
+    port = "3305"
+    username = "db_akademik_hallyeswe"
+    password = "b0bc81f04962bb99b28074a8201d704c862812df"
 
     try:
         connection = mysql.connector.connect(
-            host=Config.HOST,
-            port=Config.PORT,
-            user=Config.USER,
-            password=Config.PASSWORD,
-            database=Config.DATABASE
+            host=hostname, 
+            database=database, 
+            user=username, 
+            password=password, 
+            port=port
         )
-
-        return connection
-
+        if connection.is_connected():
+            return connection
+            
     except Error as e:
-        print(f"Gagal terhubung ke database: {e}")
+        print("Error while connecting to MariaDB", e)
         return None
